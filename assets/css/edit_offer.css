@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #4cc9f0;
+    --warning-color: #f8961e;
+    --danger-color: #f72585;
+}
+
+body {
+    background-color: #f5f7fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.edit-header:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 50px;
+    height: 4px;
+    background: var(--warning-color);
+    border-radius: 2px;
+}
+
+.edit-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--warning-color);
+    box-shadow: 0 0 0 0.25rem rgba(248, 150, 30, 0.15);
+}
+
+.input-group-icon {
+    position: relative;
+}
+
+.input-group-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    z-index: 10;
+}
+
+.input-group-icon .form-control,
+.input-group-icon .form-select {
+    padding-left: 45px;
+}
+
+.btn-update {
+    background-color: var(--warning-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-update:hover {
+    background-color: #e07c0c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(248, 150, 30, 0.3);
+}
+
+.btn-cancel {
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px);
+}
+
+.offer-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(248, 150, 30, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--warning-color);
+    font-size: 2rem;
+}
+
+.date-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.date-col {
+    flex: 1;
+}
+
+.discount-badge {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(248, 150, 30, 0.1);
+    color: var(--warning-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.status-active {
+    background: rgba(76, 201, 240, 0.1);
+    color: var(--success-color);
+}
+
+.status-expired {
+    background: rgba(247, 37, 133, 0.1);
+    color: var(--danger-color);
+}
+
+.status-upcoming {
+    background: rgba(248, 150, 30, 0.1);
+    color: var(--warning-color);
+}

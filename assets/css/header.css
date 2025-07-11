@@ -1,0 +1,97 @@
+/***** header section start *****/
+.comingoffer-header {
+    background: linear-gradient(135deg, #d63384, #9c27b0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand span {
+    background: linear-gradient(45deg, #ff9800, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+    color: #2CA1FE;
+    font-weight: 500;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+
+.nav-link i {
+    margin-right: 5px;
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #ff5722, #ff9800);
+    color: #fff !important;
+    border-radius: 50px;
+    padding: 8px 20px !important;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 8px 15px;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+    color: #d63384;
+}
+
+.location-selector {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.location-selector:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.location-selector i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+@media (max-width: 992px) {
+    .nav-link {
+        margin: 5px 0;
+        text-align: center;
+    }
+
+    .login-btn {
+        margin-top: 10px;
+    }
+}
+
+/***** header section end *****/

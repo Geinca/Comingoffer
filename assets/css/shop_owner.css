@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --success-color: #4cc9f0;
+    --warning-color: #f8961e;
+    --danger-color: #f72585;
+}
+
+body {
+    background-color: #f5f7fb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card {
+    border-left: 4px solid;
+    border-radius: 8px;
+}
+
+.summary-card.shops {
+    border-left-color: var(--primary-color);
+}
+
+.summary-card.products {
+    border-left-color: var(--success-color);
+}
+
+.summary-card.categories {
+    border-left-color: var(--warning-color);
+}
+
+.summary-card.offers {
+    border-left-color: var(--danger-color);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.welcome-header {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.welcome-header:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+}
+
+.modal-content {
+    border-radius: 16px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
