@@ -7,6 +7,24 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
+function geocodeAddress(string $addr): ?array
+{
+  $url = 'https://nominatim.openstreetmap.org/search?' .
+    http_build_query([
+      'q'      => $addr,
+      'format' => 'json',
+      'limit'  => 1,
+    ]);
+
+  $json = @file_get_contents($url);
+  if (!$json) return null;
+
+  $data = json_decode($json, true);
+  if (!$data || empty($data[0]['lat']) || empty($data[0]['lon'])) return null;
+
+  return ['lat' => (float)$data[0]['lat'], 'lng' => (float)$data[0]['lon']];
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $shop_name = $_POST['shop_name'];
   $address   = $_POST['address'];
@@ -16,6 +34,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $latitude  = $_POST['latitude'];
   $longitude = $_POST['longitude'];
   $owner_id  = $_SESSION['user_id'];
+
+  function geocodeAddress(string $addr): ?array           // ⬅️ NEW
+  {
+    $url = 'https://nominatim.openstreetmap.org/search?' .
+      http_build_query([
+        'q'      => $addr,
+        'format' => 'json',
+        'limit'  => 1,
+      ]);
+
+    $json = @file_get_contents($url);
+    if (!$json) return null;
+
+    $data = json_decode($json, true);
+    if (!$data || empty($data[0]['lat']) || empty($data[0]['lon'])) return null;
+
+    return ['lat' => (float)$data[0]['lat'], 'lng' => (float)$data[0]['lon']];
+  }
 
   // Handle image upload
   $image_path = '';
@@ -150,6 +186,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.querySelector('.location-btn')?.addEventListener('click', () => {
+      if (!navigator.geolocation) return alert('Geolocation not supported');
+
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          document.getElementById('latitude').value = pos.coords.latitude.toFixed(6);
+          document.getElementById('longitude').value = pos.coords.longitude.toFixed(6);
+        },
+        err => alert('Unable to fetch location: ' + err.message), {
+          enableHighAccuracy: true,
+          timeout: 10000
+        }
+      );
+    });
+  </script>
 </body>
 
 </html>

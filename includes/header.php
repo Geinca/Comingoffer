@@ -16,24 +16,6 @@
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
 
-          <li class="nav-item mx-lg-1">
-            <a class="nav-link d-flex align-items-center" href="./index.php" style="font-weight: 500; padding: 8px 12px; border-radius: 50px; transition: all 0.3s;">
-              <span>Home</span>
-            </a>
-          </li>
-
-          <li class="nav-item mx-lg-1">
-            <a class="nav-link d-flex align-items-center" href="./about.php" style="font-weight: 500; padding: 8px 12px; border-radius: 50px; transition: all 0.3s;">
-              <span>About us</span>
-            </a>
-          </li>
-
-          <li class="nav-item mx-lg-1">
-            <a class="nav-link d-flex align-items-center" href="./contact.php" style="font-weight: 500; padding: 8px 12px; border-radius: 50px; transition: all 0.3s;">
-              <span>Contact Us</span>
-            </a>
-          </li>
-
           <?php if (basename($_SERVER['PHP_SELF']) == 'index.php'): ?>
             <li class="nav-item dropdown mx-lg-1 me-2">
               <div class="location-selector dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" style="cursor: pointer; font-weight: 500; padding: 8px 12px; border-radius: 50px; transition: all 0.3s;">
@@ -109,6 +91,17 @@
               </a>
             </li>
           <?php endif; ?>
+
+          <div class="dropdown ms-auto">
+            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              🌐 Lan
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="?lang=en">English</a></li>
+              <li><a class="dropdown-item" href="?lang=or">ଓଡ଼ିଆ (Odia)</a></li>
+              <li><a class="dropdown-item" href="?lang=kn">ಕನ್ನಡ (Kannada)</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>

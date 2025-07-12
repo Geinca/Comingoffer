@@ -35,14 +35,33 @@ require_once 'config/db.php';
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
           <h2 class="section-title">Our Story</h2>
-          <p class="lead">Founded in 2023, ComingOffer began as a simple idea to help people discover the best deals in their neighborhood.</p>
-          <p>We noticed that many local businesses had amazing offers, but customers often didn't know about them. At the same time, shoppers were looking for ways to save money while supporting local businesses.</p>
-          <p>Today, ComingOffer has grown into a platform connecting thousands of shoppers with hundreds of local businesses across multiple cities. Our mission remains the same: to help you save money while helping local businesses thrive.</p>
+          <p class="lead">Welcome to <span style="font-weight: 700;">ComingOffer.com,</span> a proudly developed product of <span style="font-weight: 700;">Devadx Pvt Ltd,</span> dedicated to revolutionizing the way local shops connect with nearby customers. We are on a mission to empower small and medium businesses with a smart platform to share their best deals, reach more people, and grow profitably — all through the power of digital transformation.</p>
           <a href="#" class="btn btn-primary mt-3">Learn More</a>
         </div>
         <div class="col-lg-6">
           <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Story" class="img-fluid rounded shadow">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">What We Do</h2>
+      </div>
+      <p class="lead">At ComingOffer.com, we help local shops go digital — quickly and affordably. Our platform lets shop owners easily create and publish their latest offers, making them instantly visible to nearby customers.</p>
+      <div class="row g-4">
+        <p>For customers, ComingOffer.com is the simplest way to:</p>
+        <ul>
+          <li>Discover real-time deals in their area across categories like clothing, electronics, Gym, Doctor Clinic, Saloon, Grocery, Mobile, Restaurant, Education, Beauty parlour, Employee, Others </li>
+          <li>Filter offers by location (0–5 km radius)</li>
+          <li>Save favourite deals and get notified before they expire</li>
+          <li>Share exciting offers with friends on WhatsApp with one click</li>
+        </ul>
+        
+        
       </div>
     </div>
   </section>
