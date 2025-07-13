@@ -75,6 +75,21 @@ body {
     margin-bottom: 20px;
 }
 
+.what-we-do ul{
+    padding-left: 30px;
+}
+
+.what-we-do ul li{
+    line-height: 25px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.our-vision h6{
+    line-height: 30px;
+    font-size: 18px;
+}
+
 .team-member {
     text-align: center;
     margin-bottom: 30px;

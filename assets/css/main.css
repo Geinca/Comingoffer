@@ -87,7 +87,10 @@ body {
 
 /***** hero section end *****/
 
+
+
 /***** category section start *****/
+
 .category-filter.active {
   background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
   color: white !important;
@@ -112,6 +115,7 @@ body {
 /***** category section starend *****/
 
 /***** shop section start *****/
+
 .shop-card {
   border: none;
   border-radius: 15px;
@@ -178,12 +182,14 @@ body {
 
 
 /* media query */
-@media screen and (max-width:576px) {
+@media screen and (max-width: 576px) {
   .main-container{
-    display: flex;
     flex-direction: column !important;
   } 
 }
+
+
+
 .badge {
   animation: pulse 2s infinite;
 }

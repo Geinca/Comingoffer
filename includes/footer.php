@@ -1,9 +1,11 @@
+
+
 <footer class="pt-5 pb-4" style="background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); color: #fff;">
   <div class="container">
     <div class="row g-4">
 
       <!-- Store Info with Logo -->
-      <div class="col-lg-4 col-md-6 mb-4">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="d-flex align-items-center mb-3">
           <span style="font-size: 2rem; font-weight: 800; background: linear-gradient(to right, #ff8a00, #e52e71); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             Coming<span style="font-weight: 400;">offer</span>
@@ -11,20 +13,20 @@
           <span class="badge bg-warning text-dark ms-2 align-self-start">HOT</span>
         </div>
         <p class="mb-4" style="color: #b8c2cc;">Discover amazing deals and discounts from your favorite local stores.</p>
-        <div class="d-flex">
+        <div class="d-flex footer-contact flex-sm-column my-sm-1">
           <div class="me-4">
             <i class="fas fa-phone-alt me-2 text-warning"></i>
-            <span>+91 8327725217</span>
+            <span>+91 9337680876</span>
           </div>
           <div>
             <i class="fas fa-envelope me-2 text-warning"></i>
-            <span>support@comingoffer.com</span>
+            <span>info@comingoffer.com</span>
           </div>
         </div>
       </div>
 
       <!-- Quick Links -->
-      <div class="col-lg-2 col-md-6 mb-4">
+      <div class="col-lg-2 col-md-6 col-sm-12 mb-4">
         <h5 class="fw-bold mb-4 text-uppercase" style="letter-spacing: 1px; color: #ffdd59;">Quick Links</h5>
         <ul class="list-unstyled">
           <li class="mb-3">
@@ -52,7 +54,7 @@
       </div>
 
       <!-- Categories -->
-      <div class="col-lg-2 col-md-6 mb-4">
+      <div class="col-lg-2 col-md-6 col-sm-12 mb-4">
         <h5 class="fw-bold mb-4 text-uppercase" style="letter-spacing: 1px; color: #ffdd59;">Categories</h5>
         <ul class="list-unstyled">
           <li class="mb-3">
@@ -97,16 +99,13 @@
 
         <h5 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 1px; color: #ffdd59;">Follow Us</h5>
         <div class="d-flex">
-          <a href="#" class="social-icon me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
+          <a href="https://www.facebook.com/profile.php?id=61578011282394" class="social-icon me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="#" class="social-icon me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="social-icon me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
+          <a href="https://www.instagram.com/comingoffer/" class="social-icon me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="#" class="social-icon d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
+          <a href="https://www.linkedin.com/company/107827366/admin/dashboard/" class="social-icon d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; color: white; transition: all 0.3s;">
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>

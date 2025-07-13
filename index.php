@@ -75,10 +75,10 @@ $catMap = [                       // English key → translations
   </div>
 
   <div class="container-fluid mt-3">
-    <div class="row main-container">
+    <div class="main-container d-lg-flex d-md-flex">
 
       <!-- Category Sidebar -->
-      <div class="col-lg-3 col-md-4  mb-4 category">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 category">
         <div class="card shadow-sm" style="background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); color: white; border: none;">
           <div class="card-body">
             <h5 class="card-title mb-3" style="color: #ffffff;"><?= $L['categories'] ?></h5>
@@ -111,7 +111,7 @@ $catMap = [                       // English key → translations
       </div>
 
       <!-- shop card -->
-      <div class="col-lg-9 col-md-8 shop">
+      <div class="col-sm-12 col-md-8 col-lg-9 shop">
         <div id="shopContainer">
           <?php if ($shops->num_rows > 0): ?>
             <div class="row g-4">
@@ -130,7 +130,7 @@ $catMap = [                       // English key → translations
                 $categoryString = implode(",", $categoryNames);
                 $categoryStmt->close();
                 ?>
-                <div class="col-lg-4 col-md-6 mb-4 shop-col"
+                <div class="col-lg-4 col-md-6 col-12 mb-4 shop-col"
                   data-city="<?= htmlspecialchars($shop['city']) ?>"
                   data-categories="<?= htmlspecialchars($categoryString) ?>"
                   data-lat="<?= $shop['latitude'] ?>"

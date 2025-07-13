@@ -40,7 +40,7 @@ require_once 'config/db.php';
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <h3>Our Location</h3>
-            <p>123 Business Avenue<br>City Center, NY 10001</p>
+            <p>PLOT NO-216/1063<br>Jajpur Road, Jajpur, Orissa, India, 755019</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -49,7 +49,7 @@ require_once 'config/db.php';
               <i class="fas fa-phone-alt"></i>
             </div>
             <h3>Phone Number</h3>
-            <p>+91 8327725217<br>Mon-Fri, 9am-5pm</p>
+            <p>+91 9337680876<br>Mon-Fri, 9am-5pm</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -58,7 +58,7 @@ require_once 'config/db.php';
               <i class="fas fa-envelope"></i>
             </div>
             <h3>Email Address</h3>
-            <p>support@comingoffer.com</p>
+            <p>info@comingoffer.com</p>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ require_once 'config/db.php';
         </div>
         <div class="col-lg-6">
           <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256836741!2d-73.98784492452559!3d40.74844047138955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689876324293!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59617.92736558947!2d86.04902490676321!3d20.94767708720668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19518f39d6ac5d%3A0xf14bc4140cb31b7c!2sByasanagar%2C%20Odisha%2C%20India!5e0!3m2!1sen!2sus!4v1752387059749!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>

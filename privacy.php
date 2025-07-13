@@ -125,9 +125,9 @@ require_once 'config/db.php';
         <h2 class="section-title">Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, please contact us:</p>
         <ul>
-          <li>By email: privacy@comingoffer.com</li>
+          <li>By email: info@comingoffer.com</li>
           <li>By visiting this page on our website: <a href="contact.php">Contact Us</a></li>
-          <li>By phone: +91 8327725217</li>
+          <li>By phone: +91 9337680876</li>
         </ul>
       </div>
     </div>

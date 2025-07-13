@@ -24,8 +24,7 @@ require_once 'config/db.php';
     <div class="container text-center position-relative">
       <h1 class="display-4 fw-bold mb-4">About ComingOffer</h1>
       <p class="lead mb-5">Connecting shoppers with the best local deals and discounts</p>
-      <a href="#our-story" class="btn btn-light btn-lg px-4 me-2">Our Story</a>
-      <a href="#our-team" class="btn btn-outline-light btn-lg px-4">Our Team</a>
+    
     </div>
   </section>
 
@@ -34,9 +33,8 @@ require_once 'config/db.php';
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <h2 class="section-title">Our Story</h2>
+          <h2 class="section-title">About us</h2>
           <p class="lead">Welcome to <span style="font-weight: 700;">ComingOffer.com,</span> a proudly developed product of <span style="font-weight: 700;">Devadx Pvt Ltd,</span> dedicated to revolutionizing the way local shops connect with nearby customers. We are on a mission to empower small and medium businesses with a smart platform to share their best deals, reach more people, and grow profitably — all through the power of digital transformation.</p>
-          <a href="#" class="btn btn-primary mt-3">Learn More</a>
         </div>
         <div class="col-lg-6">
           <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Story" class="img-fluid rounded shadow">
@@ -46,22 +44,36 @@ require_once 'config/db.php';
   </section>
 
   <!-- What we do Section -->
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light what-we-do">
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="section-title">What We Do</h2>
       </div>
-      <p class="lead">At ComingOffer.com, we help local shops go digital — quickly and affordably. Our platform lets shop owners easily create and publish their latest offers, making them instantly visible to nearby customers.</p>
+      <p class="lead">At <span style="font-weight: 700;">ComingOffer.com,</span> we help <span style="font-weight: 700;">local shops</span> go digital — quickly and affordably. Our platform lets shop owners easily create and publish their latest offers, making them instantly visible to nearby customers.</p>
       <div class="row g-4">
-        <p>For customers, ComingOffer.com is the simplest way to:</p>
+        <h5>For <span style="font-weight: 700;">customers,</span> ComingOffer.com is the simplest way to:</h5>
         <ul>
-          <li>Discover real-time deals in their area across categories like clothing, electronics, Gym, Doctor Clinic, Saloon, Grocery, Mobile, Restaurant, Education, Beauty parlour, Employee, Others </li>
+          <li style="margin-top: 0;">Discover real-time deals in their area across categories like clothing, electronics, Gym, Doctor Clinic, Saloon, Grocery, Mobile, Restaurant, Education, Beauty parlour, Employee, Others </li>
           <li>Filter offers by location (0–5 km radius)</li>
           <li>Save favourite deals and get notified before they expire</li>
           <li>Share exciting offers with friends on WhatsApp with one click</li>
+          <li>Page readable format in English, Odia, Kannada Languages.</li>
         </ul>
-        
-        
+        <h5>In short, we make <span style="font-weight: 700;">offer discovery and local shopping smarter, faster, and more connected.</span></h5>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our vision Section -->
+  <section class="py-5 bg-light our-vision">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Vision</h2>
+      </div>
+      <p class="lead">To be the go-to platform for discovering local offers and helping businesses and grow through smart, easy-to-use digital tools.</p>
+      <div class="row g-4">
+        <h5 style="font-weight: 700;">Powered by Devadx Pvt Ltd</h5>
+        <h6>ComingOffer.com is a product of <span style="font-weight: 700;">Devadx Pvt Ltd,</span> a data-driven company focused on solving local business challenges through <span style="font-weight: 700;">AI, performance marketing, and data science solutions.</span> Our team is passionate about empowering regional economies and helping small businesses thrive in a digital-first world.</h6>
       </div>
     </div>
   </section>
@@ -138,7 +150,7 @@ require_once 'config/db.php';
   </section>
 
   <!-- Team Section -->
-  <section id="our-team" class="py-5">
+  <!-- <section id="our-team" class="py-5">
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="section-title">Meet Our Team</h2>
@@ -171,7 +183,7 @@ require_once 'config/db.php';
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CTA Section -->
   <section class="py-5 bg-light">
