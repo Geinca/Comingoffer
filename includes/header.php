@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark py-2" style="background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); box-shadow: 0 4px 18px rgba(0,0,0,0.1);">
     <div class="container">
       <a class="navbar-brand" href="index.php" style="font-weight: 800; font-size: 1.8rem; letter-spacing: -1px;">
-        <span style="color: #fff;">Coming</span><span style="color: #ffdd59;">offer</span>
+        <span style="color: #fff;">Coming</span><span style="color: #ffdd59;">Offer</span>
         <span class="badge bg-warning text-dark ms-2" style="font-size: 0.6rem; vertical-align: super; border-radius: 10px;">HOT DEALS</span>
       </a>
 
@@ -85,7 +85,7 @@
 
           <?php else: ?>
             <li class="nav-item ms-lg-2">
-              <a href="./auth/login.php" action="_blank" class="nav-link login-btn d-flex align-items-center" style="background-color: #ffdd59; color: #6e48aa; font-weight: 600; padding: 8px 20px; border-radius: 50px; transition: all 0.3s;">
+              <a href="./auth/login.php" target="_blank" class="nav-link login-btn d-flex align-items-center" style="background-color: #ffdd59; color: #6e48aa; font-weight: 600; padding: 8px 20px; border-radius: 50px; transition: all 0.3s;">
                 <i class="fas fa-sign-in-alt me-2"></i>
                 <span>Login</span>
               </a>

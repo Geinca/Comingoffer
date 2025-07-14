@@ -165,69 +165,93 @@
 </style>
 
 <div class="sidebar">
-    <div class="sidebar-container">
-        <div class="sidebar-header">
-            <a href="#" class="sidebar-brand">
-                <i class="fas fa-store-alt"></i>
-                <span>Shop Dashboard</span>
-            </a>
-        </div>
-        
-        <div class="sidebar-content">
-            <ul class="nav nav-pills flex-column mb-auto px-2">
-                <li class="nav-item">
-                    <a href="../dashboard/index.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../dashboard/manage_shops.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'manage_shops.php' ? 'active' : '' ?>">
-                        <i class="fas fa-store"></i>
-                        <span>My Shops</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../dashboard/products.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : '' ?>">
-                        <i class="fas fa-box-open"></i>
-                        <span>Products</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../dashboard/categories.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'categories.php' ? 'active' : '' ?>">
-                        <i class="fas fa-tags"></i>
-                        <span>Categories</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../dashboard/offers.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'offers.php' ? 'active' : '' ?>">
-                        <i class="fas fa-gift"></i>
-                        <span>Offers</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../dashboard/subscription_plan.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'subscription_plan.php' ? 'active' : '' ?>">
-                        <i class="fas fa-gift"></i>
-                        <span>Subscription Plan</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="sidebar-footer">
-            <div class="user-profile">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="user-info">
-                    <div><?= htmlspecialchars($_SESSION['username'] ?? 'User') ?></div>
-                    <small>Shop Owner</small>
-                </div>
-            </div>
-            <a href="../auth/logout.php" class="nav-link text-white mt-3">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
-        </div>
+  <div class="sidebar-container">
+    <div class="sidebar-header">
+      <a href="#" class="sidebar-brand">
+        <i class="fas fa-store-alt"></i>
+        <span>Shop Dashboard</span>
+      </a>
     </div>
+
+    <div class="sidebar-content">
+      <ul class="nav nav-pills flex-column mb-auto px-2">
+        <li class="nav-item">
+          <a href="../dashboard/index.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <?php if ($_SESSION['role'] === 'shop_owner'): ?>
+          <li class="nav-item">
+            <a href="../dashboard/manage_shops.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'manage_shops.php' ? 'active' : '' ?>">
+              <i class="fas fa-store"></i>
+              <span>My Shops</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/products.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'products.php' ? 'active' : '' ?>">
+              <i class="fas fa-box-open"></i>
+              <span>Products</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/categories.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'categories.php' ? 'active' : '' ?>">
+              <i class="fas fa-tags"></i>
+              <span>Categories</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/offers.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'offers.php' ? 'active' : '' ?>">
+              <i class="fas fa-gift"></i>
+              <span>Offers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/subscription_plan.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'subscription_plan.php' ? 'active' : '' ?>">
+              <i class="fas fa-gift"></i>
+              <span>Subscription Plan</span>
+            </a>
+          </li>
+        <?php endif; ?>
+
+        <?php if ($_SESSION['role'] === 'admin'): ?>
+          <li class="nav-item">
+            <a href="../dashboard/all_users.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'all_users.php' ? 'active' : '' ?>">
+              <i class="fas fa-users-cog"></i>
+              <span>Manage Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/shops.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'shops.php' ? 'active' : '' ?>">
+              <i class="fas fa-store"></i>
+              <span>All Shops</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../dashboard/reviews.php" class="nav-link text-white <?= basename($_SERVER['PHP_SELF']) == 'reviews.php' ? 'active' : '' ?>">
+              <i class="fas fa-star"></i>
+              <span>Reviews</span>
+            </a>
+          </li>
+        <?php endif; ?>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+          <div><?= htmlspecialchars($_SESSION['username'] ?? 'User') ?></div>
+          <small><?= ucfirst($_SESSION['role'] ?? 'User') ?></small>
+        </div>
+      </div>
+      <a href="../auth/logout.php" class="nav-link text-white mt-3">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
 </div>

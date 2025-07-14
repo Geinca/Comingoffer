@@ -98,7 +98,7 @@ $recent_activities = $conn->query("
 
             <!-- Main Content -->
             <div class="col-lg-10 col-md-9 main-content">
-                <h2 class="welcome-header">Welcome back, <?= htmlspecialchars($_SESSION['name'] ?? 'Shop Owner') ?>!</h2>
+                <h2 class="welcome-header">Welcome back, <?= htmlspecialchars($_SESSION['username'] ?? 'Shop Owner') ?>!</h2>
                 <p class="text-muted mb-4">Here's what's happening with your business today</p>
 
                 <!-- Summary Widgets -->

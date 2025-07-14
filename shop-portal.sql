@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2025 at 09:53 AM
+-- Generation Time: Jul 14, 2025 at 02:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,7 +58,7 @@ INSERT INTO `categories` (`category_id`, `shop_id`, `category_name`, `created_at
 (1, 2, 'Clothing', '2025-07-01 12:59:28'),
 (2, 3, 'Container', '2025-07-03 07:48:09'),
 (3, 4, 'Electronics', '2025-07-10 06:35:59'),
-(4, 2, 'Gym', '2025-07-10 06:36:26'),
+(4, 2, 'Pharmacy', '2025-07-10 06:36:26'),
 (5, 2, 'Saloon', '2025-07-10 06:41:33');
 
 -- --------------------------------------------------------
@@ -90,7 +90,9 @@ INSERT INTO `customer_queries` (`query_id`, `user_id`, `shop_id`, `name`, `email
 (3, 1, NULL, 'Chinmaya', 'chinmaya@gmail.com', 'vuguygyuyu', 'byhbuhui', 'new', '2025-07-11 07:34:36', NULL),
 (4, 1, NULL, 'Chinmaya Prasad', 'cpbehera03@gmail.com', 'vgvvvvvgv', 'cffvtytjjjjjj', 'new', '2025-07-11 07:36:10', NULL),
 (5, 1, NULL, 'hjvbhjhjb', 'ch@gmail.com', 'ygbbbbjj', 'jkjnjnhjnjn', 'new', '2025-07-11 07:39:20', NULL),
-(6, 1, NULL, 'bb', 'Ch@gmail.com', 'b jb jknkjk', 'vhbhijmiojioj', 'new', '2025-07-11 07:41:25', NULL);
+(6, 1, NULL, 'bb', 'Ch@gmail.com', 'b jb jknkjk', 'vhbhijmiojioj', 'new', '2025-07-11 07:41:25', NULL),
+(7, 1, NULL, 'Chinmaya', 'cpbehera03@gmail.com', 'your send to mail option is working', 'your send to mail option is working', 'new', '2025-07-14 11:00:02', NULL),
+(8, 1, NULL, 'Chinmaya', 'cpbehera03@gmail.com', 'your send to mail option is working', 'your send to mail option is working', 'new', '2025-07-14 11:00:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,6 +151,30 @@ INSERT INTO `products` (`product_id`, `shop_id`, `category_id`, `product_name`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `review_id` int(11) NOT NULL,
+  `shop_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` tinyint(1) NOT NULL CHECK (`rating` between 1 and 5),
+  `comment` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `shop_id`, `user_id`, `rating`, `comment`, `created_at`) VALUES
+(1, 2, 1, 4, 'all good', '2025-07-14 11:38:36'),
+(2, 2, 1, 4, 'nice shop', '2025-07-14 11:52:35'),
+(3, 3, 1, 3, 'nice offers', '2025-07-14 11:54:01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shops`
 --
 
@@ -175,7 +201,9 @@ INSERT INTO `shops` (`shop_id`, `owner_id`, `shop_name`, `address`, `city`, `sta
 (3, 2, 'Reliance Smart Bazaar', 'Bhubaneswar,Odisha', 'Bhubaneswar', 'Odisha', '751002', 20.00000000, 40.00000000, '2025-07-03 07:45:53', 'uploads/shops/shop_686e64b59fb4e1.56131298.jpg'),
 (4, 1, 'V-MART', 'Gopabandhu Chak, Byasanagar, Odisha 750019', 'Jajpur', 'Odisha', '750019', 20.98146400, 86.14222000, '2025-07-07 06:51:42', 'uploads/shops/shop_686e625d31c148.55714809.webp'),
 (5, 1, 'Patanjali Mega Store', 'Plot No 2060 & 2061 & 2062, Samantarapur, Old Town, Bhubaneswar, Odisha 751002', 'Bhubaneswar', 'Odisha', '751002', 0.00000000, 0.00000000, '2025-07-08 05:39:23', 'uploads/shops/shop_686e6b37036061.95839627.webp'),
-(6, 1, 'Monginis Cake Shop', 'Plot No 3095 Mahaveer Nagar, Samantarapur, Old Town, Bhubaneswar, Odisha 751007', 'Bhubaneswar', 'Odisha', '751007', 0.00000000, 0.00000000, '2025-07-08 09:17:49', 'uploads/shops/shop_686e6b60180fd2.83924604.webp');
+(6, 1, 'Monginis Cake Shop', 'Plot No 3095 Mahaveer Nagar, Samantarapur, Old Town, Bhubaneswar, Odisha 751007', 'Bhubaneswar', 'Odisha', '751007', 0.00000000, 0.00000000, '2025-07-08 09:17:49', 'uploads/shops/shop_686e6b60180fd2.83924604.webp'),
+(7, 1, 'V-Mart', 'Old LIC Colony Rd, Badambadi Colony, Cuttack, Odisha 753012', 'Cuttack', 'Odisha', '753012', 0.00000000, 0.00000000, '2025-07-12 05:31:56', 'uploads/shops/shop_6871f34c792e02.77725192.webp'),
+(8, 1, ' Prem Traders', 'Yeshwanthpur, Bangalore', 'Bangalore', 'Karnataka', '560022', 0.00000000, 0.00000000, '2025-07-12 05:37:53', 'uploads/shops/shop_6871f4b1da3345.54704815.webp');
 
 -- --------------------------------------------------------
 
@@ -244,6 +272,14 @@ ALTER TABLE `products`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `fk_review_shop` (`shop_id`),
+  ADD KEY `fk_review_user` (`user_id`);
+
+--
 -- Indexes for table `shops`
 --
 ALTER TABLE `shops`
@@ -277,7 +313,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customer_queries`
 --
 ALTER TABLE `customer_queries`
-  MODIFY `query_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `query_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `offers`
@@ -292,10 +328,16 @@ ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -340,6 +382,13 @@ ALTER TABLE `offers`
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`shop_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `fk_review_shop` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`shop_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_review_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `shops`

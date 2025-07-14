@@ -1,5 +1,3 @@
-
-
 <footer class="pt-5 pb-4" style="background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); color: #fff;">
   <div class="container">
     <div class="row g-4">
@@ -7,10 +5,10 @@
       <!-- Store Info with Logo -->
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="d-flex align-items-center mb-3">
-          <span style="font-size: 2rem; font-weight: 800; background: linear-gradient(to right, #ff8a00, #e52e71); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            Coming<span style="font-weight: 400;">offer</span>
-          </span>
-          <span class="badge bg-warning text-dark ms-2 align-self-start">HOT</span>
+          <a class="navbar-brand" href="index.php" style="font-weight: 800; font-size: 1.8rem; letter-spacing: -1px;">
+            <span style="color: #fff;">Coming</span><span style="color: #ffdd59;">Offer</span>
+            <span class="badge bg-warning text-dark ms-2" style="font-size: 0.6rem; vertical-align: super; border-radius: 10px;">HOT DEALS</span>
+          </a>
         </div>
         <p class="mb-4" style="color: #b8c2cc;">Discover amazing deals and discounts from your favorite local stores.</p>
         <div class="d-flex footer-contact flex-sm-column my-sm-1">

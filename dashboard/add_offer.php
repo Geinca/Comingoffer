@@ -16,8 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $desc = $_POST['description'];
   $discount = $_POST['discount_percent'];
   $start = $_POST['start_date'];
-  $end = $_POST['end_date'];
-  
+
+  $end = date('Y-m-d', strtotime($start . ' +2 days'));
+
   // Handle image upload
   $image_path = '';
   if (isset($_FILES['offer_image']) && $_FILES['offer_image']['error'] == 0) {
@@ -25,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!file_exists($target_dir)) {
       mkdir($target_dir, 0755, true);
     }
-    
+
     $file_extension = pathinfo($_FILES['offer_image']['name'], PATHINFO_EXTENSION);
     $filename = uniqid() . '.' . $file_extension;
     $target_file = $target_dir . $filename;
-    
+
     // Check if image file is an actual image
     $check = getimagesize($_FILES['offer_image']['tmp_name']);
     if ($check !== false) {
@@ -39,7 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
-  $stmt = $conn->prepare("INSERT INTO offers (shop_id, title, description, discount_percent, start_date, end_date, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt = $conn->prepare(
+    "INSERT INTO offers
+         (shop_id, title, description, discount_percent, start_date, end_date, image_path)
+         VALUES (?, ?, ?, ?, ?, ?, ?)"
+  );
   $stmt->bind_param("ississs", $shop_id, $title, $desc, $discount, $start, $end, $image_path);
   $stmt->execute();
 
@@ -60,17 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <?php include '../includes/navbar.php'; ?>
-  
+
   <div class="container py-4">
     <div class="offer-header text-center">
       <h3><i class="fas fa-percentage me-2"></i> Create New Offer</h3>
     </div>
-    
+
     <div class="offer-form">
       <div class="offer-icon">
         <i class="fas fa-gift"></i>
       </div>
-      
+
       <form method="POST" enctype="multipart/form-data">
         <div class="mb-4">
           <label for="shop_id" class="form-label">Shop</label>
@@ -86,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </select>
           </div>
         </div>
-        
+
         <!-- New Image Upload Field -->
         <div class="mb-4">
           <label for="offer_image" class="form-label">Offer Image</label>
@@ -99,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img id="previewImg" src="#" alt="Preview" style="max-width: 200px; max-height: 150px; border-radius: 5px;">
           </div>
         </div>
-        
+
         <div class="mb-4">
           <label for="title" class="form-label">Offer Title</label>
           <div class="input-group-icon">
@@ -107,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" name="title" id="title" class="form-control" placeholder="Enter offer title" required>
           </div>
         </div>
-        
+
         <div class="mb-4">
           <label for="description" class="form-label">Description</label>
           <div class="input-group-icon">
@@ -115,17 +120,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter offer details"></textarea>
           </div>
         </div>
-        
+
         <div class="mb-4">
           <label for="discount_percent" class="form-label">Discount Percentage</label>
           <div class="input-group-icon" style="position: relative;">
             <i class="fas fa-percent"></i>
-            <input type="number" name="discount_percent" id="discount_percent" class="form-control" 
-                   placeholder="0" min="1" max="100" required>
+            <input type="number" name="discount_percent" id="discount_percent" class="form-control"
+              placeholder="0" min="1" max="100" required>
             <span class="discount-badge">% OFF</span>
           </div>
         </div>
-        
+
+        <!-- Offer Period -->
         <div class="mb-4">
           <label class="form-label">Offer Period</label>
           <div class="date-row">
@@ -133,19 +139,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <label for="start_date" class="form-label">Start Date</label>
               <div class="input-group-icon">
                 <i class="fas fa-calendar-alt"></i>
-                <input type="date" name="start_date" id="start_date" class="form-control" required>
+                <input type="date" name="start_date" id="start_date"
+                  class="form-control" required>
               </div>
             </div>
             <div class="date-col">
-              <label for="end_date" class="form-label">End Date</label>
+              <label for="end_date" class="form-label">End Date<br><small>(auto‑set)</small></label>
               <div class="input-group-icon">
                 <i class="fas fa-calendar-alt"></i>
-                <input type="date" name="end_date" id="end_date" class="form-control" required>
+                <!-- readonly prevents typing, keeps the value visible -->
+                <input type="date" name="end_date" id="end_date"
+                  class="form-control" readonly>
               </div>
             </div>
           </div>
         </div>
-        
+
+
         <div class="d-flex justify-content-center gap-3">
           <a href="offers.php" class="btn btn-secondary btn-cancel">
             <i class="fas fa-times me-2"></i> Cancel
@@ -160,15 +170,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Set minimum end date to be same as start date
-    document.getElementById('start_date').addEventListener('change', function() {
-      document.getElementById('end_date').min = this.value;
-    });
-    
-    // Set today's date as default minimum for start date
+    /* --- JS right before </body> --- */
+
+    // Today is the earliest allowed start date
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('start_date').min = today;
-    
+
+    // When the user picks a start date, auto‑fill expiry (+2 days) and
+    // make sure the form still shows a sensible default if they reload.
+    function updateEndDate() {
+      const startField = document.getElementById('start_date');
+      const endField = document.getElementById('end_date');
+      if (startField.value) {
+        const d = new Date(startField.value);
+        d.setDate(d.getDate() + 2); // add exactly 2 calendar days
+        endField.value = d.toISOString().split('T')[0];
+      } else {
+        endField.value = '';
+      }
+    }
+
+    document.getElementById('start_date').addEventListener('change', updateEndDate);
+    updateEndDate(); // run once on page load
+
+
     // Image preview functionality
     document.getElementById('offer_image').addEventListener('change', function(event) {
       const file = event.target.files[0];
@@ -186,4 +211,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     });
   </script>
 </body>
+
 </html>

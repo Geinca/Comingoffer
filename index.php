@@ -167,7 +167,7 @@ $catMap = [                       // English key → translations
                       </div>
 
                       <!-- Rating with Progress Bar -->
-                      <div class="rating mb-3 d-flex align-items-center">
+                      <!-- <div class="rating mb-3 d-flex align-items-center">
                         <div class="stars me-2" style="color: #FFD700;">
                           <i class="fas fa-star"></i>
                           <i class="fas fa-star"></i>
@@ -179,7 +179,7 @@ $catMap = [                       // English key → translations
                           <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
                         </div>
                         <span class="text-muted ms-2 small">(24 reviews)</span>
-                      </div>
+                      </div> -->
 
                       <!-- Location with Distance -->
                       <div class="d-flex align-items-center mb-3">
@@ -229,6 +229,25 @@ $catMap = [                       // English key → translations
                         </small>
                       </div>
                     </div>
+
+                    <!-- Action buttons -->
+                    <div class="d-flex gap-2 justify-content-between">
+                      <button type="button"
+                        class="btn text-white btn-sm review-btn" style="background: linear-gradient(135deg, #ff5722, #ff9800);"
+                        data-shop-id="<?= $shop['shop_id'] ?>"
+                        data-bs-toggle="modal"
+                        data-bs-target="#reviewModal">
+                        <i class="fas fa-pen me-1"></i> Review
+                      </button>
+
+                      <button type="button"
+                        class="btn btn-sm text-white share-btn" style="margin-left:30px;background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%)"
+                        data-link="<?= htmlspecialchars(
+                                      '/shop_details.php?id=' . $shop['shop_id']
+                                    ) ?>">
+                        <i class="fas fa-share-alt me-1"></i> Share
+                      </button>
+                    </div>
                   </div>
                 </div>
               <?php endwhile; ?>
@@ -257,6 +276,35 @@ $catMap = [                       // English key → translations
   <!-- Font Awesome (CDN for icons) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/main.js"></script>
+
+  <!-- Review modal (one global instance) -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="reviewForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Leave a review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3 text-center" id="starWrapper">
+            <!-- 5 stars rendered by JS -->
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" name="comment" rows="3"
+              placeholder="Write something nice…"></textarea>
+          </div>
+          <input type="hidden" name="shop_id" id="reviewShopId">
+          <input type="hidden" name="rating" id="reviewRating" value="0">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary w-100" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -288,6 +336,126 @@ $catMap = [                       // English key → translations
           });
         });
       });
+
+      /* ---------- REVIEW ---------- */
+
+      // Turn ★★★★☆ into clickable stars
+      const starWrapper = document.getElementById('starWrapper');
+      for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('i');
+        star.className = 'far fa-star fa-2x text-warning cursor-pointer mx-1';
+        star.dataset.value = i;
+        starWrapper.appendChild(star);
+      }
+
+      starWrapper.addEventListener('mouseover', e => {
+        if (!e.target.dataset.value) return;
+        highlightStars(e.target.dataset.value);
+      });
+
+      starWrapper.addEventListener('click', e => {
+        if (!e.target.dataset.value) return;
+        const val = e.target.dataset.value;
+        document.getElementById('reviewRating').value = val;
+        highlightStars(val);
+      });
+
+      starWrapper.addEventListener('mouseleave', () => {
+        highlightStars(document.getElementById('reviewRating').value);
+      });
+
+      function highlightStars(count) {
+        [...starWrapper.children].forEach(star => {
+          star.classList.toggle('fas', star.dataset.value <= count);
+          star.classList.toggle('far', star.dataset.value > count);
+        });
+      }
+
+      // When a “Review” button is clicked, store its shop‑id
+      document.querySelectorAll('.review-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('reviewShopId').value = btn.dataset.shopId;
+          document.getElementById('reviewRating').value = 0;
+          highlightStars(0);
+        });
+      });
+
+      // Submit via fetch (AJAX)
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewModal = document.getElementById('reviewModal');
+
+      reviewForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+
+        try {
+          const res = await fetch('handlers/review.php', {
+            method: 'POST',
+            body: fd
+          });
+          const json = await res.json();
+
+          if (json.success) {
+            bootstrap.Toast.getOrCreateInstance(showToast('Thanks for reviewing!'));
+            alert('Thanks for reviewing!');
+
+            /* ⬇️ 1) Clear the fields right away */
+            reviewForm.reset(); // empties textarea & hidden inputs
+            document.getElementById('reviewRating').value = 0;
+            highlightStars(0); // turn stars back to outline
+
+            bootstrap.Modal.getInstance(reviewModal).hide(); // close modal
+            // (optional) refresh rating bar here via AJAX
+          } else {
+            throw Error(json.msg || 'Failed');
+          }
+        } catch (err) {
+          alert('Could not save review: ' + err.message);
+        }
+      });
+
+      /* ⬇️ 2) In case the user closes the modal manually, also reset then */
+      reviewModal.addEventListener('hidden.bs.modal', () => {
+        reviewForm.reset();
+        document.getElementById('reviewRating').value = 0;
+        highlightStars(0);
+      });
+
+
+      /* ---------- SHARE ---------- */
+
+      document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const link = btn.dataset.link;
+
+          try {
+            if (navigator.share) {
+              await navigator.share({
+                url: link,
+                title: 'Check out this shop!'
+              });
+            } else {
+              await navigator.clipboard.writeText(link);
+              bootstrap.Toast.getOrCreateInstance(showToast('Link copied!'));
+            }
+          } catch (_) {
+            alert('Share cancelled or unsupported.');
+          }
+        });
+      });
+
+      /* ---------- Tiny toast helper ---------- */
+      function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.className = 'toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0 m-3';
+        toast.role = 'alert';
+        toast.innerHTML = `<div class="d-flex">
+                         <div class="toast-body">${msg}</div>
+                         <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                       </div>`;
+        document.body.appendChild(toast);
+        return toast;
+      }
 
       // === 0‑5 km location filter =========================
       // function getDistanceKm(lat1, lon1, lat2, lon2) {
